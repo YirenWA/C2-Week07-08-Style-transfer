@@ -3,18 +3,13 @@
 
 # In[53]:
 
-
 get_ipython().system('pip install --upgrade tensorflow_hub')
-
 
 # In[54]:
 
-
 get_ipython().system('pip install matplotlib')
 
-
 # In[55]:
-
 
 import tensorflow_hub as hub
 import tensorflow as tf
@@ -23,20 +18,14 @@ import numpy as np
 import os
 from PIL import Image
 import cv2
-
-
 #使用 IPython.display.display 函数来进行图像的显示。
 #from IPython.display import display
 
-
 # In[24]:
-
 
 model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
 
-
 # In[25]:
-
 
 def load_image(img_path):
     img = tf.io.read_file(img_path)
@@ -45,9 +34,7 @@ def load_image(img_path):
     img = img[tf.newaxis, :]
     return img
 
-
 # In[26]:
-
 
 # 遍历指定文件夹中的所有图像文件并进行风格转换
 content_images = []
@@ -65,9 +52,7 @@ style_image = load_image('image/output3.jpg')
 plt.imshow(np.squeeze(style_image))
 plt.show()
 
-
 # In[27]:
-
 
 # 创建一个空列表，用于存储stylized_images
 stylized_images = []
@@ -77,15 +62,11 @@ for content_image in content_images:
     stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
     stylized_images.append(stylized_image)
 
-
 # In[28]:
-
 
 #stylized_image = model(tf.constant(content_image), tf.constant(style_image))[0]
 
-
 # In[52]:
-
 
 a = []
 a.append((r"I w**? *o"))
@@ -116,4 +97,3 @@ for i in range(len(content_images)):
    
     plt.show()
     
-
